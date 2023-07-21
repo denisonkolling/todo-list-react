@@ -10,11 +10,15 @@ export const TodoWrapper = () => {
 	const [list, setList] = useState([]);
 
 	const addTask = (task) => {
-		setList([
-			...list,
-			{ id: uuidv4(), task: task, completed: false, isEditing: false },
-		]);
-		console.log(list);
+		if (task == '' || task == ' ') {
+			alert('Write your task...');
+		} else {
+			setList([
+				...list,
+				{ id: uuidv4(), task: task, completed: false, isEditing: false },
+			]);
+			console.log(list);
+		}
 	};
 
 	const toggleComplete = (id) => {
@@ -51,12 +55,12 @@ export const TodoWrapper = () => {
 			<TodoForm addTask={addTask} />
 			{list.map((task, index) =>
 				task.isEditing ? (
-					<EditTodoForm key={index} editTask={updateTask} task={task}/>
+					<EditTodoForm key={index} editTask={updateTask} task={task} />
 				) : (
 					<Todo
 						task={task}
 						key={index}
-						toggComplete={toggleComplete}
+						toggleComplete={toggleComplete}
 						deleteTask={deleteTask}
 						editTask={editTask}
 					/>
