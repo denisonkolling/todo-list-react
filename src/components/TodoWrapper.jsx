@@ -17,7 +17,6 @@ export const TodoWrapper = () => {
 				...list,
 				{ id: uuidv4(), task: task, completed: false, isEditing: false },
 			]);
-			console.log(list);
 		}
 	};
 
